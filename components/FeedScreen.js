@@ -73,6 +73,7 @@ const FeedScreen = () => {
           }
           shlokNum = shlokNum.toString();
           setData(currentShlokKey,shlokNum);
+          setData(currentChapterKey,currentChapNum.toString())
           setCurrentShlokNum(shlokNum);
           setChangeShlok(false);
           setCurrentShlok(null);

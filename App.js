@@ -3,13 +3,12 @@ import AboutScreen from './components/AboutScreen';
 import { NativeWindStyleSheet } from 'nativewind';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { createMaterialBottomTabNavigator } from 'react-native-paper/react-navigation';
-import TitleBar from './components/TitleBar';
 import { NavigationContainer } from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FeedScreen from './components/FeedScreen';
 import { GitaProvider } from './utils/context/context';
 import ChapterScreen from './components/ChapterScreen';
-
+import Toast from 'react-native-toast-message';
 const Tab = createMaterialBottomTabNavigator();
 NativeWindStyleSheet.setOutput({   web: "native",   default: "native", });
 
@@ -39,9 +38,12 @@ function App(){
           <MaterialCommunityIcons name="folder" size={26} color={500} />
         )}}
          />
+         
       </Tab.Navigator>
+      <Toast />
    </NavigationContainer>
    </GitaProvider>
+   
    </SafeAreaProvider>
   );
 }

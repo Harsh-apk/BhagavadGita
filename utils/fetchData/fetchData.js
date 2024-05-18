@@ -29,7 +29,6 @@ export const getShlokFromApi = async(currentChapNum,currentShlokNum,setCurrentCh
         verseCount = (parseInt(currentChapNum)+1);
         verseCount = verseCount.toString();
         setCurrentChapNum(verseCount);
-        setData(currentChapterKey,currentChapNum);
         
     }
     setData(currentShlokKey,(currentShlokNum).toString());

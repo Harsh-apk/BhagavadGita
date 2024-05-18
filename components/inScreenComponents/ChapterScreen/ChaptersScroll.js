@@ -8,10 +8,20 @@ import {
     TouchableOpacity,
     View,
   } from 'react-native';
+import Toast from 'react-native-toast-message';
 import { GitaContext } from '../../../utils/context/context';
+import { currentChapterKey } from '../../../utils/asyncStorage/storageKeys';
+import { setData } from '../../../utils/asyncStorage/dataStore';
 const ChaptersScroll = () => {
     const [chap,setChap] = useState(0);
     const {setCurrentShlok,setChangeShlok,allChapters,currentChapNum,setCurrentChapNum, setCurrentShlokNum} = useContext(GitaContext);
+    const showToast = (chapterr) => {
+        Toast.show({
+          type: 'success',
+          text1: 'Chapter changed!',
+          text2: 'Go to homescreen to read chapter '+chapterr.toString()
+        });
+      }
   return (
     <View className="mb-64" >
         <View className="items-center mt-1 mb-2 " ><View  className="bg-fuchsia-50 p-2 rounded-lg " ><Text className="text-lg font-bold text-black " >वर्तमान अध्याय : {currentChapNum}</Text></View></View>
@@ -58,7 +68,7 @@ const ChaptersScroll = () => {
 
                 </View>
                 </View>
-                <TouchableOpacity onPress={()=>{setCurrentShlok(null);setChangeShlok(1);setCurrentChapNum(item.chapter_number);setCurrentShlokNum(0);}} > 
+                <TouchableOpacity onPress={()=>{setCurrentShlok(null);setChangeShlok(1);setCurrentChapNum(item.chapter_number);setCurrentShlokNum(0);setData(currentChapterKey,currentChapNum.toString());showToast(item.chapter_number)}} > 
                     <View  className="items-center ">
                         <View  className="bg-fuchsia-50 p-3 rounded-lg shadow-sm">
                             <Text className="text-lg text-black" >Select Chapter</Text>
